@@ -1,0 +1,287 @@
+TESTING
+
+-------- TABLE OF CONTENTS --------
+
+1.1 SET-UP INSTRUCTIONS
+1.2 DIFFERENT IP ADDRESSES
+1.3 UI COMMANDS
+
+2.0 DETAILED TEST INSTRUCTIONS
+2.1 Alter a packet (Error 4)
+2.2 Change TID (Error 5)
+2.3 Network Errors
+3.1 Error 1
+3.2 Error 2
+3.3 Error 3
+3.4 Error 6
+
+1.1--------------------------------------------------------- SET-UP INSTRUCTIONS
+
+  - Open new project containing '\SYSC3303\Iteration 5' directory
+  - All '.java' files can be found in '\SYSC3303\Iteration 5\src'
+  - Run TFTPServer.java
+  - Run TFTPErrorSimulator.java
+  - Follow prompts in Error Simulator and Server first.
+  
+
+1.2—————————————————————————————————————————————————————————— DIFFERENT IP ADRESSES
+
+- Run Client.java on separate machine from TFTPErrorSimulator.java and TFTPServer.java
+- You will be prompted with:
+	Please enter the IP address of the server (L for localhost)
+- Enter the IP Address of the machine that TFTPErrorSimulator.java and TFTPServer.java are running on. 
+- Follow the prompts in Client
+- To change IP address again during the transfer, type 'SA' and follow prompts
+
+1.3———————————————————————————————— UI COMMANDS
+
+  'string' + enter to execute command
+   _______________________________________________
+  | y   | - yes (confirmation)                    |
+  | n   | - no (confirmation)                     |
+  | h   | - help                                  |
+  | v   | - toggle verbosity                      |
+  | q   | - quit and shut down simulator          |
+  | int | - menu item selector                    |
+  |_____|_________________________________________|
+
+
+2.0----------------------------------------------------------- TEST INSTRUCTIONS
+
+  - Run 'TFTPErrorSimulator.java'
+  - You will be prompted with:
+            Welcome the TFTP Error Simulator (H for help)
+            Would you like to simulate an error? (Y/N) (H for help)
+
+  - Enter 'y', 'n', or 'h':
+
+  - If 'n' selected, the following will be printed:
+            Error Simulator Ready
+            Begin transfer at any time
+            Error Simulator started.
+            Error Simulator running.
+
+            Simulator: Waiting for packet.
+
+  - If 'h' selected, the following will be printed:
+            TFTP SIMULATOR HELP
+            The following commands may be entered at any time
+            V: Toggle verbosity
+            Q: Quit and shut down Simulator
+            H: Help
+            Would you like to simulate an error? (Y/N) (H for help)
+
+  - If 'y' selected, the following will be printed:
+            TFTP SIMULATOR ERROR MENU
+			1: Alter a packet
+			2: Change the TID of a packet
+			3: Simulate Network Errors
+			0: Cancel and start error simulator
+
+Please input your selection:
+
+  - The user is then prompted to enter an integer from 0-7:
+			- Refer to 2.1 if 1 selected
+			- Refer to 2.2 if 2 selected
+			- Refer to 2.3 if 3 selected
+
+	- Once all errors are selected, the following will be printed:
+						Error Simulator Ready
+						Begin transfer at any time
+						Error Simulator started.
+						Error Simulator running.
+
+						Simulator: Waiting for packet.
+
+2.1--------------------------------------------------------------- Alter a packet (Error code 4)
+
+  - If '1' selected, the following will be printed:
+
+            Error code 4 selected
+            Please select one of the following 6 options:
+            1: Alter Opcode of a Packet
+            2: Change the Block Number of a Packet
+            3: Alter the Mode of a WRQ or RRQ
+            4: Change the Size of a Packet
+            5: Alter a Specific Byte in a Packet
+            6: Change the filename of a WRQ or RRQ
+            0: Return to Error Menu
+
+	- The user is then prompted to enter an integer from 0-7
+
+		- If 1 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted to enter a new opcode
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 2 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a new packet number
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 3 selected:
+			The user will then be prompted for a new mode
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 4 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a new packet size
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 5 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a byte to alter
+			The user will then be prompted for a new byte value
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 6 selected:
+			The user will then be prompted for a new filename
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 0 selected:
+			Return to main menu
+
+2.2--------------------------------------------------------------------- Change TID (Error Code 5)
+
+  - Else if '2' selected, the following will be printed:
+
+            Change the TID of a packet selected
+            Please select one of the following 3 options:
+						1: Alter TID (Change Port)
+						2: Change Address
+						0: Return to Error Menu
+
+	- The user is then prompted to enter an integer from 0-3
+
+		- If 1 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a new port number
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 2 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a new InetAddress
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 0 selected:
+			Return to main menu
+
+
+
+2.3--------------------------------------------------------------------- Network Errors
+
+  - Else if '3' selected, the following will be printed:
+
+            Simulate Network Errors selected
+			Please select one of the following 3 options:
+					1: Delay a Packet
+					2: Duplicate a Packet
+					3: Lose a Packet
+					0: Return to Error Menu
+
+	- The user is then prompted to enter an integer from 0-3
+
+		- If 1 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a delay in milliseconds
+			The user will then be prompted asking if they wish to simulate another error
+
+		- If 2 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted for a delay in milliseconds
+			The user will then be prompted asking if they wish to simulate another error
+			
+		- If 2 selected:
+			The user will be prompted to enter a direction (client to server || server to client)
+			The user will then be prompted for a packet number
+			The user will then be prompted asking if they wish to simulate another error	
+
+		- If 0 selected:
+			Return to main menu
+
+
+
+
+3.0———————————————————————————————————————————————————————————————————————— CHANGE DIRECTORY 
+
+To Change Directory type in CD in Server or Client. You will be prompted:
+	Please enter the directory you would like to change to.
+
+Change the directory to simulate Error 1, Error 2, Error 3 or Error 6 as needed. 
+
+By default the Client receives files in src and sends files to ServerOutput. 
+
+
+3.1————————————————————————————————————————————————————————————————————————  ERROR 1
+
+  Run Client.java 
+
+  Your will be prompted 
+	Would you like to read or write a file? (R/W) (H for help)
+
+  Enter R or W for Read or Write
+
+  You will be prompted 
+	Please enter the path of the file:
+
+
+  Enter a file that does not exist. 
+
+
+3.2————————————————————————————————————————————————————————————————————————  ERROR 2
+
+  Change the permissions on text document so that no access is permitted i.e. no read or write
+
+  Run Client.java 
+
+  Your will be prompted 
+	Would you like to read or write a file? (R/W) (H for help)
+
+  Enter R or W for Read or Write. 
+
+  You will be prompted 
+	Please enter the path of the file:
+
+
+  Enter a the name of the test file with no access. 
+
+3.3————————————————————————————————————————————————————————————————————————  ERROR 3
+
+  Fill the USB until it is nearly full.
+
+  Run Client.java 
+
+  Your will be prompted 
+	Would you like to read or write a file? (R/W) (H for help)
+
+  Enter R or W for Read or Write
+
+  You will be prompted 
+	Please enter the path of the file:
+
+  Enter a test file bigger than the space left on the USB. 
+
+3.4———————————————————————————————————————————————————————————————————————— ERROR 6
+
+  Create a text file to test.
+
+  Run Client.java 
+
+  You will be prompted 
+	Would you like to read or write a file? (R/W) (H for help)
+
+  Enter R or W for Read or Write
+
+  You will be prompted 
+	Please enter the path of the file:
+
+
+  Enter the name of the test file with the same name. 
+        
